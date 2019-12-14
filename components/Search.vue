@@ -1,6 +1,6 @@
 <template>
-  <div class="search-component">
-
+  <div class="search-component common-section">
+    <slot/>
   </div>
 </template>
 <script>
