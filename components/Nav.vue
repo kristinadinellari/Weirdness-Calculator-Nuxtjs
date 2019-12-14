@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-component">
+  <div class="nav common-section">
     Wierdness Calculator
   </div>
 </template>
