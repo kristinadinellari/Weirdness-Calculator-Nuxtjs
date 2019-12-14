@@ -1,5 +1,5 @@
 <template>
-  <div class="description-component">
+  <div class="description-component common-section">
     <p>{{description.text1}}</p>
     <p v-html="description.text2"></p>
   </div>

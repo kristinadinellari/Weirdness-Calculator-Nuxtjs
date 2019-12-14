@@ -1,6 +1,6 @@
 <template>
   <div class="result-component">
-    result comp
+    Result comp
   </div>
 </template>
 <script>

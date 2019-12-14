@@ -20,3 +20,28 @@
     }
   }
 }
+//search
+
+.search-component {
+  span {
+    @include fontSizes(12);
+    font-weight: 500;
+    color: $name-color;
+  }
+  .search-holder {
+    button {
+      padding: 10px 20px;
+      color: white;
+      background: $primary-color;
+      border: none;
+      @include borderRadius(3px);
+      @include fontSizes(14);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    input {
+      padding: 8px;
+      margin-right: -8px;
+    }
+  }
+}
