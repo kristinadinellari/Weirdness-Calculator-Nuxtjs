@@ -6,13 +6,9 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
-  components: {
-    Logo
-  },
   computed: {
     ...mapGetters([
       'val'
