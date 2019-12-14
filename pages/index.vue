@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <button @click="setVal('ho me')">Click</button>
-    <div>{{val}}</div>
+
   </div>
 </template>
 

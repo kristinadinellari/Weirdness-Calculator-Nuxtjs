@@ -1,8 +1,5 @@
 <template>
   <div class="nav-component">
-    test
+    Wierdness Calculator
   </div>
 </template>
-<script>
-
-</script>
