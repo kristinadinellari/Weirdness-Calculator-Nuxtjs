@@ -1,13 +1,13 @@
 <template>
   <div class="calc-component">
-    <button :disabled="buttonStatus" :class="buttonStatus ? 'disableButton' : ''" @click="test">
-      Calculate my wierdness score
+    <button class="action-button" :disabled="buttonStatus" :class="buttonStatus ? 'disableButton' : ''" @click="redirect">
+      Calculate my weirdness score
     </button>
     <div class="message-display" v-html="toLike"></div>
   </div>
 </template>
 <script>
-  import { mapGetters, mapMutations } from 'vuex'
+  import { mapGetters } from 'vuex'
 
   export default {
     computed: {
@@ -23,9 +23,12 @@
         return this.likedGIFs.length < 5
       }
     },
+
     methods: {
-      test () {
-        console.log('test')
+      redirect () {
+        this.$router.push({
+          name: 'Result'
+        })
       }
     }
   }

@@ -42,7 +42,6 @@
     methods: {
       ...mapMutations([
         'setGIFs',
-        'setSearchName',
         'setLikeAction'
       ]),
 
@@ -70,9 +69,10 @@
       async getGIFs () {
         const res = await searchService.get(this.name);
         if (res.data && res.data.data) {
-          this.content = res.data.data.map((gif) => {
+          this.content = res.data.data.map((gif, index) => {
             return {
               ...gif,
+              weirdness: index,
               searchName: this.name
             }
           });

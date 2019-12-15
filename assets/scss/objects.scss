@@ -189,70 +189,71 @@
 }
 //liked gifs
 .liked-GIFs-component {
-  .GIF-section {
+}
+.GIF-section {
+  @include flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .GIF-holder {
+    width: 46%;
+    margin: 40px 0;
     @include flex;
-    flex-wrap: wrap;
     justify-content: space-between;
-    .GIF-holder {
-      width: 46%;
-      margin: 40px 0;
-      @include flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: column;
-      img[lazy=loading] {
-        object-fit: contain !important;
-      }
-      h4 {
+    align-items: center;
+    flex-direction: column;
+    img[lazy=loading] {
+      object-fit: contain !important;
+    }
+    h4 {
+      width: 100%;
+      color: $name-color;
+      @include fontSizes(16);
+      text-transform: capitalize;
+      text-align: center;
+    }
+    .GIF-action {
+      margin-top: 40px;
+      width: 100%;
+      .unlike-gif {
+        position: relative;
+        z-index: 10;
+        margin-bottom: -25px;
         width: 100%;
-        color: $name-color;
-        @include fontSizes(16);
-        text-transform: capitalize;
-        text-align: center;
-      }
-      .GIF-action {
-        margin-top: 40px;
-        width: 100%;
-        .unlike-gif {
-          position: relative;
-          z-index: 10;
-          margin-bottom: -25px;
-          width: 100%;
-          padding-right: 5px;
-          height: 20px;
-          @include flex;
-          justify-content: flex-end;
+        padding-right: 5px;
+        height: 20px;
+        @include flex;
+        justify-content: flex-end;
 
-          .circle {
-            cursor: pointer;
-            width: 20px;
-            height: 20px;
-            @include borderRadius(50%);
-            background: $primary-color;
-            &:hover {
-              background: lighten($primary-color, 2%);;
-            }
-            p {
-              color: white;
-              font-weight: bold;
-              text-align: center;
-              @include fontSizes(12);
-            }
+        .circle {
+          cursor: pointer;
+          width: 20px;
+          height: 20px;
+          @include borderRadius(50%);
+          background: $primary-color;
+          &:hover {
+            background: lighten($primary-color, 2%);;
+          }
+          p {
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            @include fontSizes(12);
           }
         }
+      }
 
-        img {
-          width: 100%;
-          height: 200px;
-          object-fit: cover;
-        }
-        img[lazy=loading] {
-          object-fit: contain !important;
-        }
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      img[lazy=loading] {
+        object-fit: contain !important;
       }
     }
   }
 }
+
 //calculate component
 .calc-component{
   width: 100%;
@@ -260,21 +261,25 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  button {
-    margin: 40px 0;
-    text-transform: uppercase;
-    background: $primary-color;
-    color: white;
-    @include fontSizes(14);
-    font-weight: bold;
-    padding: 15px 30px;
-    @include borderRadius(3px);
-    &:hover {
-      background: lighten($primary-color, 2%);;
-    }
+}
+.action-button {
+  margin: 40px 0;
+  text-transform: uppercase;
+  background: $primary-color;
+  color: white;
+  @include fontSizes(14);
+  font-weight: bold;
+  padding: 15px 30px;
+  @include borderRadius(3px);
+  &:hover {
+    background: lighten($primary-color, 2%);;
   }
 }
+
 //result page
 .result-page {
-
+  @include flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

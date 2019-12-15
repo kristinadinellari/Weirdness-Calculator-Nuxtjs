@@ -1,5 +1,5 @@
 <template>
   <div class="nav common-section">
-    Wierdness Calculator
+    Weirdness Calculator
   </div>
 </template>
