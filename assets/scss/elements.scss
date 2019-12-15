@@ -27,3 +27,9 @@ input {
 .error-message {
   color: red !important;
 }
+
+.gif {
+  margin: 40px 0;
+  object-fit: contain;
+  @include borderRadius(3px);
+}

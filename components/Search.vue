@@ -67,7 +67,6 @@
           this.getGIFs();
         }
       },
-
       async getGIFs () {
         const res = await searchService.get(this.name);
         if (res.data && res.data.data) {

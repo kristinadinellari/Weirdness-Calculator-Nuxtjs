@@ -1,8 +1,34 @@
 <template>
   <div class="liked-GIFs-component common-section">
     <h4 class="title">Your Liked Gifs</h4>
-
-    liked
+    <div class="GIF-section">
+      <div class="GIF-holder" v-for="(gif, index) in likedGIFs" :key="index">
+        <h4 v-if="gif && gif.title">{{gif.title}}</h4>
+        <h4 v-else>GIF</h4>
+        <div class="GIF-action" v-if="gif && gif.images && gif.images.original && gif.images.original.url">
+          <div class="unlike-gif">
+            <div class="circle">
+              <p>x</p>
+            </div>
+          </div>
+          <img v-lazy="gif.images.original.url">
+        </div>
+      <img v-else src="../static/svg/no-img.svg">
+    </div>
+    </div>
   </div>
 </template>
-<script></script>
+<script>
+  import { mapGetters, mapMutations } from 'vuex'
+
+  export default {
+    data () {
+      return {}
+    },
+    computed: {
+      ...mapGetters([
+        'likedGIFs'
+      ])
+    }
+  }
+</script>

@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <section>
+    <section class="first-section">
       <Search>
         <Description/>
       </Search>
       <SearchResult/>
     </section>
-    <section>
+    <section class="second-section">
       <Liked/>
     </section>
   </div>
