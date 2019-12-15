@@ -1,5 +1,6 @@
 export const state = () => ({
-  GIFs: [
+  GIFs:[],
+  /*GIFs: [
     {
       "type": "gif",
       "id": "rdma0nDFZMR32",
@@ -1971,21 +1972,24 @@ export const state = () => ({
         }
       }
     }
-  ],
+  ],*/
+  likedGIF: [],
   action: false
 });
 
 export const mutations = {
   setGIFs(state, gifs) {
     state.GIFs = gifs;
+    console.log(gifs, 'gifs')
   },
-  setAction (state, action) {
+  setLikedGIF (state, {gif, action}) {
+    state.likedGIF.push(gif)
     state.action = action
-  }
+    console.log(state.likedGIF, 'likedGIF')
+  },
 };
 
 export const getters = {
   GIFs: state => state.GIFs,
   likeAction: state => state.action
-
 };

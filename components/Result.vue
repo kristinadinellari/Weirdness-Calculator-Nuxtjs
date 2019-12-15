@@ -9,7 +9,7 @@
       <button class="like-button" @click="like(gif)">
         <img src="../static/svg/like.svg" alt="">
       </button>
-      <input class="range" type="range" @change="change(index)" v-model="index" min="0" step="1" max="10">
+      <input class="range" type="range" @change="change(index)" v-model="index" min="0" step="1" :max="maxRange">
     </div>
   </div>
 </template>
@@ -28,18 +28,22 @@
       ]),
       gif () {
         return this.GIFs[this.index]
+      },
+      maxRange () {
+        return this.GIFs.length
       }
     },
     methods: {
       ...mapMutations([
-        'setAction'
+        'setLikedGIF',
+        'setGIFs'
       ]),
       change(i) {
         this.index = i;
       },
       like (gifObj) {
-        this.setAction(true)
-        console.log(gifObj, 'gif obj')
+        this.setLikedGIF({gif: gifObj, action: true})
+        this.setGIFs([])
       }
     }
   }

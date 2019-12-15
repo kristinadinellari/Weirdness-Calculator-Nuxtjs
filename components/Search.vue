@@ -28,10 +28,12 @@
     },
     watch: {
       likeAction () {
-        if (this.likeAction) this.$refs.searchInput.focus()
+        if (this.likeAction) {
+          this.name = '';
+          this.$refs.searchInput.focus();
+        }
       }
     },
-
     methods: {
       ...mapMutations([
         'setGIFs',
@@ -40,15 +42,16 @@
       ]),
 
       async getGifs () {
-        this.setAction(false)
+        this.setAction(false);
         const res = await searchService.get(this.name);
         if (res.data && res.data.data) {
-          this.content = res.data.data;
+          this.content = res.data.data.map((gif) => {
+            return {
+              ...gif,
+              searchName: this.name
+            }
+          });
           this.setGIFs(this.content)
-          // this.setGIFs({
-          //   name: this.name,
-          //   data: this.content
-          // })
         }
       }
     }
