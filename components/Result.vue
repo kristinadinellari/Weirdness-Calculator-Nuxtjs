@@ -1,30 +1,45 @@
 <template>
-  <div class="result-component">
-    <!--<div class="video" v-for="(gif, index) in GIFs" :key="`${gif.title}-gif-${index}`">-->
-    <div class="video">
-      <img v-lazy="GIFs[i].images.original.url">
-      <h4>{{GIFs[i].title}} {{i}}</h4>
+  <div class="result-component common-section">
+    <h4 class="title">Your Result</h4>
+    <div class="gif-section common-section">
+      <h4 v-if="gif && gif.title">{{gif.title}}</h4>
+      <h4 v-else>GIF</h4>
+      <img class="gif" v-if="gif && gif.images && gif.images.original && gif.images.original.url" v-lazy="gif.images.original.url">
+      <img class="gif" v-else src="../static/svg/no-img.svg">
+      <button class="like-button" @click="like(gif)">
+        <img src="../static/svg/like.svg" alt="">
+      </button>
+      <input class="range" type="range" @change="change(index)" v-model="index" min="0" step="1" max="10">
     </div>
-    <input type="range" @change="test(i)" v-model="i" min="0" max="10">
   </div>
 </template>
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapMutations } from 'vuex'
 
   export default  {
     data () {
       return {
-        i: 0
+        index: 0
       }
     },
     computed: {
       ...mapGetters([
         'GIFs'
-      ])
+      ]),
+      gif () {
+        return this.GIFs[this.index]
+      }
     },
     methods: {
-      test(i) {
-        console.log(i, 't')
+      ...mapMutations([
+        'setAction'
+      ]),
+      change(i) {
+        this.index = i;
+      },
+      like (gifObj) {
+        this.setAction(true)
+        console.log(gifObj, 'gif obj')
       }
     }
   }

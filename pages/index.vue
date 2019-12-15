@@ -7,7 +7,7 @@
       <Result/>
     </section>
     <section>
-
+      <Liked/>
     </section>
   </div>
 </template>
@@ -20,6 +20,7 @@ export default {
     Search: () => import('~/components/Search'),
     Description: () => import('~/components/Description'),
     Result: () => import('~/components/Result'),
+    Liked: () => import('~/components/Liked'),
   },
   computed: {
     ...mapGetters([

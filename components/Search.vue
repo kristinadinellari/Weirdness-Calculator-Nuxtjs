@@ -4,14 +4,14 @@
     <section class="common-section">
       <span>Search term</span>
       <div class="search-holder">
-        <input v-model="name" type="text">
+        <input v-model="name" ref="searchInput" type="text">
         <button @click="getGifs">Search</button>
       </div>
     </section>
   </div>
 </template>
 <script>
-  import { mapMutations } from 'vuex'
+  import { mapMutations, mapGetters } from 'vuex'
   import searchService from '@/service/index'
 
   export default {
@@ -21,16 +21,34 @@
         content: []
       }
     },
+    computed: {
+      ...mapGetters([
+        'likeAction'
+      ])
+    },
+    watch: {
+      likeAction () {
+        if (this.likeAction) this.$refs.searchInput.focus()
+      }
+    },
+
     methods: {
       ...mapMutations([
-        'setGIFs'
+        'setGIFs',
+        'setSearchName',
+        'setAction'
       ]),
 
       async getGifs () {
-        const res = await searchService.get(this.name)
+        this.setAction(false)
+        const res = await searchService.get(this.name);
         if (res.data && res.data.data) {
-          this.content = res.data.data
+          this.content = res.data.data;
           this.setGIFs(this.content)
+          // this.setGIFs({
+          //   name: this.name,
+          //   data: this.content
+          // })
         }
       }
     }

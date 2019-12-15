@@ -1971,16 +1971,21 @@ export const state = () => ({
         }
       }
     }
-  ]
+  ],
+  action: false
 });
 
 export const mutations = {
-  setGIFs(state, val) {
-    state.val = val
-    console.log('u vendos', val)
+  setGIFs(state, gifs) {
+    state.GIFs = gifs;
+  },
+  setAction (state, action) {
+    state.action = action
   }
 };
 
 export const getters = {
-  GIFs: state => state.GIFs
+  GIFs: state => state.GIFs,
+  likeAction: state => state.action
+
 };
