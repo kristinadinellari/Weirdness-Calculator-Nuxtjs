@@ -1,19 +1,21 @@
 <template>
   <div class="container">
-    <section class="first-section">
+    <section class="first-section" :class="!likedGIFsLenght ? 'fullContainer' : ''">
       <Search>
         <Description/>
       </Search>
       <SearchResult/>
     </section>
-    <section class="second-section">
-      <Liked/>
+    <section class="second-section" v-show="likedGIFsLenght">
+      <Liked>
+        <Calc/>
+      </Liked>
     </section>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -21,16 +23,20 @@ export default {
     Description: () => import('~/components/Description'),
     SearchResult: () => import('~/components/SearchResult'),
     Liked: () => import('~/components/Liked'),
+    Calc: () => import('~/components/Calculate'),
   },
   computed: {
     ...mapGetters([
-      'val'
-    ])
+      'likedGIFs'
+    ]),
+    likedGIFsLenght () {
+      return this.likedGIFs.length > 0
+    }
   },
   methods: {
-    ...mapMutations([
-      'setVal'
-    ])
+    // ...mapMutations([
+    //   'setVal'
+    // ])
   }
 }
 </script>

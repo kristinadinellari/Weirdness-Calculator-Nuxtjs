@@ -20,12 +20,17 @@
   width: 100%;
   @include flex;
   justify-content: space-between;
-
+  .fullContainer {
+    width: 100% !important;
+    @include transition(all .3s)
+  }
   .first-section {
     width: 55%;
+    @include transition(all .3s)
   }
   .second-section {
     width: 45%;
+    @include transition(all .3s)
   }
 }
 //search
@@ -43,7 +48,6 @@
       padding: 10px 20px;
       color: white;
       background: $primary-color;
-      border: none;
       @include borderRadius(3px);
       @include fontSizes(14);
       font-weight: 500;
@@ -83,7 +87,6 @@
     button {
       margin-bottom: 40px;
       background: $primary-color;
-      border: none;
       @include borderRadius(3px);
       @include flex;
       justify-content: center;
@@ -200,6 +203,9 @@
         text-transform: capitalize;
         text-align: center;
       }
+      img[lazy=loading] {
+        object-fit: contain !important;
+      }
 
       .GIF-action {
         margin-top: 40px;
@@ -220,6 +226,9 @@
             height: 20px;
             @include borderRadius(50%);
             background: $primary-color;
+            &:hover {
+              background: lighten($primary-color, 2%);;
+            }
             p {
               color: white;
               font-weight: bold;
@@ -228,15 +237,37 @@
             }
           }
         }
+        img[lazy=loading] {
+          object-fit: contain !important;
+        }
         img {
           width: 100%;
           height: 200px;
           object-fit: cover;
         }
-        img[lazy=loading] {
-          object-fit: contain !important;
-        }
       }
+    }
+  }
+}
+//calculate component
+
+.calc-component{
+  width: 100%;
+  @include flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  button {
+    margin: 40px 0;
+    text-transform: uppercase;
+    background: $primary-color;
+    color: white;
+    @include fontSizes(14);
+    font-weight: bold;
+    padding: 15px 30px;
+    @include borderRadius(3px);
+    &:hover {
+      background: lighten($primary-color, 2%);;
     }
   }
 }

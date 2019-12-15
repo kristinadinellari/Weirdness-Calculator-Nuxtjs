@@ -18,6 +18,7 @@ html {
 }
 button {
   outline: none;
+  border: none;
   cursor: pointer;
 }
 input {
@@ -33,3 +34,4 @@ input {
   object-fit: contain;
   @include borderRadius(3px);
 }
+

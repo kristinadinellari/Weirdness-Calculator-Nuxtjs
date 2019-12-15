@@ -1973,8 +1973,8 @@ export const state = () => ({
       }
     }
   ],*/
-  // likedGIFs: [],
-  likedGIFs: [
+  likedGIFs: [],
+/*  likedGIFs: [
     {
       "type": "gif",
       "id": "rdma0nDFZMR32",
@@ -2169,7 +2169,7 @@ export const state = () => ({
         }
       }
     },
-    /*{
+    /!*{
       "type": "gif",
       "id": "XOXdQszYm4I3m",
       "url": "https://giphy.com/gifs/fun-XOXdQszYm4I3m",
@@ -2960,8 +2960,8 @@ export const state = () => ({
           "url": "https://giphy-analytics.giphy.com/simple_analytics?response_id=66ca22699af40ee028cc73ead2f49c3c50bdb907&event_type=GIF_SEARCH&gif_id=3oKIPh1R66cpYt0Mb6&action_type=SENT"
         }
       }
-    }*/
-  ],
+    }*!/
+  ],*/
   action: false
 });
 

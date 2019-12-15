@@ -16,10 +16,11 @@
       <img v-else src="../static/svg/no-img.svg">
     </div>
     </div>
+    <slot v-if="likedGIFs && likedGIFs.length > 0"/>
   </div>
 </template>
 <script>
-  import { mapGetters, mapMutations } from 'vuex'
+  import { mapGetters } from 'vuex'
 
   export default {
     data () {
