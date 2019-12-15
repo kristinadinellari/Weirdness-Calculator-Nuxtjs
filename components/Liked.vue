@@ -7,7 +7,7 @@
         <h4 v-else>GIF</h4>
         <div class="GIF-action" v-if="gif && gif.images && gif.images.original && gif.images.original.url">
           <div class="unlike-gif">
-            <div class="circle">
+            <div class="circle" @click="unLike(gif)">
               <p>x</p>
             </div>
           </div>
@@ -20,7 +20,7 @@
   </div>
 </template>
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapMutations } from 'vuex'
 
   export default {
     data () {
@@ -30,6 +30,14 @@
       ...mapGetters([
         'likedGIFs'
       ])
+    },
+    methods: {
+      ...mapMutations([
+        'setLikeAction'
+      ]),
+      unLike (gif) {
+        this.setLikeAction({gif: gif, action: true})
+      }
     }
   }
 </script>

@@ -2972,7 +2972,12 @@ export const mutations = {
   },
   setLikeAction (state, {gif, action}) {
     if (gif !== undefined) {
-      state.likedGIFs.push(gif)
+      const index = state.likedGIFs.indexOf(gif);
+      if (index === -1) {
+        state.likedGIFs.push(gif);
+      } else {
+        state.likedGIFs.splice(index, 1);
+      }
     }
     state.action = action
     console.log(state.likedGIFs, 'likedGIF')
