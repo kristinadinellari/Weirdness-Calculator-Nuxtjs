@@ -8,14 +8,10 @@
         <button @click="getGifs">Search</button>
       </div>
     </section>
-    <div class="video" v-for="(video, index) in content" :key="`${content.title}-video-${index}`">
-      <img :src="video.images.original.url">
-      <h4>{{content.title}}</h4>
-    </div>
   </div>
 </template>
 <script>
-  import { mapGetters, mapMutations } from 'vuex'
+  import { mapMutations } from 'vuex'
   import searchService from '@/service/index'
 
   export default {
@@ -26,20 +22,17 @@
       }
     },
     methods: {
+      ...mapMutations([
+        'setGIFs'
+      ]),
+
       async getGifs () {
         const res = await searchService.get(this.name)
-        this.content = res.data.data
-        console.log(res, 'res')
+        if (res.data && res.data.data) {
+          this.content = res.data.data
+          this.setGIFs(this.content)
+        }
       }
     }
   }
 </script>
-<style lang="scss">
-  .video{
-    img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-    }
-  }
-</style>
