@@ -1984,10 +1984,10 @@ export const mutations = {
   },
   setLikeAction (state, {gif, action}) {
     if (gif !== undefined) {
-      state.likedGIF.push(gif)
+      state.likedGIFs.push(gif)
     }
     state.action = action
-    console.log(state.likedGIF, 'likedGIF')
+    console.log(state.likedGIFs, 'likedGIF')
   },
 };
 

@@ -56,14 +56,18 @@
         if (this.likedGIFs && this.likedGIFs.length > 0) {
           const findUsedTerm = this.likedGIFs.filter(t => t.searchName === this.name);
           if (findUsedTerm.length > 0) {
-            this.backToSearch();
             this.showMessage = true;
-            this.messageText = 'You have used this term before!'
+            this.messageText = `You have used ${this.name} term before!`
+            this.backToSearch();
           } else {
+            this.getGIFs();
             this.showMessage = false;
           }
+        } else {
+          this.getGIFs();
         }
       },
+
       async getGIFs () {
         const res = await searchService.get(this.name);
         if (res.data && res.data.data) {

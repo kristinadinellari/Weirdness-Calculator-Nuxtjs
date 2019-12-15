@@ -30,7 +30,8 @@
     },
     computed: {
       ...mapGetters([
-        'GIFs'
+        'GIFs',
+        'likedGIFs'
       ]),
       gif () {
         return this.GIFs[this.index]

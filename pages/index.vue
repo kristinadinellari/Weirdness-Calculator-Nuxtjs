@@ -4,7 +4,7 @@
       <Search>
         <Description/>
       </Search>
-      <Result/>
+      <SearchResult/>
     </section>
     <section>
       <Liked/>
@@ -19,7 +19,7 @@ export default {
   components: {
     Search: () => import('~/components/Search'),
     Description: () => import('~/components/Description'),
-    Result: () => import('~/components/Result'),
+    SearchResult: () => import('~/components/SearchResult'),
     Liked: () => import('~/components/Liked'),
   },
   computed: {
