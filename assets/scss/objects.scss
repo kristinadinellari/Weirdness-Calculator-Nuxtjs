@@ -23,7 +23,7 @@
   .fullContainer {
     width: 100% !important;
     @include transition(all .3s);
-    img {
+    .gif-img {
       min-height: 400px;
     }
   }

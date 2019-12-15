@@ -11,7 +11,7 @@
               <p>x</p>
             </div>
           </div>
-          <img v-lazy="gif.images.original.url">
+          <img class="gif-img" v-lazy="gif.images.original.url">
         </div>
       <img v-else src="../static/svg/no-img.svg">
     </div>
