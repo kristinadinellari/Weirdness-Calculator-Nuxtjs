@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <section class="first-section" :class="!likedGIFsLenght ? 'fullContainer' : ''">
+    <section class="first-section" v-show="likedGIFsLenght < 5" :class="likedGIFsLenght <= 0 ? 'fullContainer' : ''">
       <Search>
         <Description/>
       </Search>
       <SearchResult/>
     </section>
-    <section class="second-section" v-show="likedGIFsLenght">
+    <section class="second-section" v-show="likedGIFsLenght > 0" :class="likedGIFsLenght >= 5  ? 'fullContainer' : ''">
       <Liked>
         <Calc/>
       </Liked>
@@ -30,7 +30,7 @@ export default {
       'likedGIFs'
     ]),
     likedGIFsLenght () {
-      return this.likedGIFs.length > 0
+      return this.likedGIFs.length
     }
   },
   methods: {

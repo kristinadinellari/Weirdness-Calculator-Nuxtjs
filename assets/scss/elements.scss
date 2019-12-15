@@ -34,4 +34,6 @@ input {
   object-fit: contain;
   @include borderRadius(3px);
 }
-
+img[lazy=loading] {
+  object-fit: contain !important;
+}
