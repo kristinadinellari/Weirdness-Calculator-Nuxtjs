@@ -5,8 +5,11 @@
       <span>Search term</span>
       <div class="search-holder">
         <input v-model="name" ref="searchInput" type="text">
-        <button @click="getGifs">Search</button>
+        <button @click="check">Search</button>
       </div>
+      <span class="error-message" v-if="showMessage">
+        {{messageText}}
+      </span>
     </section>
   </div>
 </template>
@@ -18,19 +21,21 @@
     data () {
       return {
         name: '',
-        content: []
+        content: [],
+        showMessage: false,
+        messageText: ''
       }
     },
     computed: {
       ...mapGetters([
-        'likeAction'
+        'likeAction',
+        'likedGIFs'
       ])
     },
     watch: {
       likeAction () {
         if (this.likeAction) {
-          this.name = '';
-          this.$refs.searchInput.focus();
+          this.backToSearch()
         }
       }
     },
@@ -38,11 +43,28 @@
       ...mapMutations([
         'setGIFs',
         'setSearchName',
-        'setAction'
+        'setLikeAction'
       ]),
 
-      async getGifs () {
-        this.setAction(false);
+      backToSearch () {
+        this.name = '';
+        this.$refs.searchInput.focus();
+      },
+
+      check () {
+        this.setLikeAction({action: false});
+        if (this.likedGIFs && this.likedGIFs.length > 0) {
+          const findUsedTerm = this.likedGIFs.filter(t => t.searchName === this.name);
+          if (findUsedTerm.length > 0) {
+            this.backToSearch();
+            this.showMessage = true;
+            this.messageText = 'You have used this term before!'
+          } else {
+            this.showMessage = false;
+          }
+        }
+      },
+      async getGIFs () {
         const res = await searchService.get(this.name);
         if (res.data && res.data.data) {
           this.content = res.data.data.map((gif) => {

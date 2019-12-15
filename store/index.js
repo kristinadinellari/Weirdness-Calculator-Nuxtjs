@@ -1973,7 +1973,7 @@ export const state = () => ({
       }
     }
   ],*/
-  likedGIF: [],
+  likedGIFs: [],
   action: false
 });
 
@@ -1982,8 +1982,10 @@ export const mutations = {
     state.GIFs = gifs;
     console.log(gifs, 'gifs')
   },
-  setLikedGIF (state, {gif, action}) {
-    state.likedGIF.push(gif)
+  setLikeAction (state, {gif, action}) {
+    if (gif !== undefined) {
+      state.likedGIF.push(gif)
+    }
     state.action = action
     console.log(state.likedGIF, 'likedGIF')
   },
@@ -1991,5 +1993,6 @@ export const mutations = {
 
 export const getters = {
   GIFs: state => state.GIFs,
-  likeAction: state => state.action
+  likeAction: state => state.action,
+  likedGIFs: state => state.likedGIFs
 };
