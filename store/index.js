@@ -2980,7 +2980,6 @@ export const mutations = {
       }
     }
     state.action = action
-    console.log(state.likedGIFs, 'likedGIF')
   },
 };
 
