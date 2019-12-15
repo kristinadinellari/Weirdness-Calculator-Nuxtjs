@@ -41,7 +41,6 @@
   }
 }
 //search
-
 .search-component {
   border-right: 1px solid $boder-color;
   border-bottom: 1px solid $boder-color;
@@ -69,7 +68,6 @@
     }
   }
 }
-
 //search result
 .search-result-component {
   border-right: 1px solid $boder-color;
@@ -189,7 +187,6 @@
     border: none;
   }
 }
-
 //liked gifs
 .liked-GIFs-component {
   .GIF-section {
@@ -257,7 +254,6 @@
   }
 }
 //calculate component
-
 .calc-component{
   width: 100%;
   @include flex;
@@ -277,4 +273,8 @@
       background: lighten($primary-color, 2%);;
     }
   }
+}
+//result page
+.result-page {
+
 }
